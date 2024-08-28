@@ -1,0 +1,22 @@
+GET http://0.0.0.0:8080/api/serializabletasks
+Accept: application/json
+
+###
+
+GET http://0.0.0.0:8080/api/serializabletasks/byPriority/Medium
+Accept: application/json
+
+###
+
+POST http://0.0.0.0:8080/api/tasks
+Content-Type: application/json
+
+{
+  "name": "cooking",
+  "description": "Cook the dinner",
+  "priority": "High"
+}
+
+###
+
+DELETE http://0.0.0.0:8080/api/tasks/gardening
