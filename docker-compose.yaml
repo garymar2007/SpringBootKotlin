@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: springbootkotlin-postgres
+    platform: linux/amd64
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=springbootkotlin
+    ports:
+      - "5455:5432"
+    volumes:
+      - ./migrations/:/docker-entrypoint-initdb.d/
+      - postgres-data:/var/lib/postgresql/data/
+
+volumes:
+  postgres-data:
