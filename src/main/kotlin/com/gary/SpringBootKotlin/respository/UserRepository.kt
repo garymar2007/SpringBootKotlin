@@ -9,9 +9,9 @@ import java.util.*
 @Repository
 class UserRepository(private val encoder: PasswordEncoder) {
     private var users = mutableListOf(
-        User(id = UUID.randomUUID(), email = "email1", password = encoder.encode("pass1"), role = Role.USER),
-        User(id = UUID.randomUUID(), email = "email2", password = encoder.encode("pass2"), role = Role.ADMIN),
-        User(id = UUID.randomUUID(), email = "email3", password = encoder.encode("pass3"), role = Role.USER),
+        User(id = UUID.randomUUID(), email = "email1", password = encoder.encode("pass1"), role = Role.ROLE_USER),
+        User(id = UUID.randomUUID(), email = "email2", password = encoder.encode("pass2"), role = Role.ROLE_ADMIN),
+        User(id = UUID.randomUUID(), email = "email3", password = encoder.encode("pass3"), role = Role.ROLE_USER),
     )
 
     fun getAllUsers(): List<User> = users

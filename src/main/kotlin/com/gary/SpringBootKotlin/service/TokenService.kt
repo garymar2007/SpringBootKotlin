@@ -54,5 +54,3 @@ class TokenService(
             .payload
     }
 }
-
-//https://www.youtube.com/watch?v=iqkt9ip567A&list=PLvN8k8yxjoeud4ESoB-wjiieqYGaDVqPR&index=7
