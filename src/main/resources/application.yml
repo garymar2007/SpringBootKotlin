@@ -1,0 +1,17 @@
+jwt:
+    key: ${JWT_KEY}
+    access-token-expiration: 3600000
+    refresh-token-expiration: 86400000
+
+spring:
+    application:
+        name: SpringBootKotlin
+    datasource:
+        password: postgres
+        url: jdbc:postgresql://localhost:5455/springbootkotlin
+        username: postgres
+    jpa:
+        database: postgresql
+        hibernate:
+            ddl-auto: none
+

@@ -2,15 +2,16 @@ package com.gary.SpringBootKotlin.respository
 
 import com.gary.SpringBootKotlin.model.Role
 import com.gary.SpringBootKotlin.model.User
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-class UserRepository {
+class UserRepository(private val encoder: PasswordEncoder) {
     private var users = mutableListOf(
-        User(id = UUID.randomUUID(), email = "email1", password = "pass1", role = Role.USER),
-        User(id = UUID.randomUUID(), email = "email2", password = "pass2", role = Role.ADMIN),
-        User(id = UUID.randomUUID(), email = "email3", password = "pass3", role = Role.USER),
+        User(id = UUID.randomUUID(), email = "email1", password = encoder.encode("pass1"), role = Role.USER),
+        User(id = UUID.randomUUID(), email = "email2", password = encoder.encode("pass2"), role = Role.ADMIN),
+        User(id = UUID.randomUUID(), email = "email3", password = encoder.encode("pass3"), role = Role.USER),
     )
 
     fun getAllUsers(): List<User> = users
@@ -20,8 +21,9 @@ class UserRepository {
     fun getUserByEmail(email: String): User? = users.firstOrNull { it.email == email }
 
     fun saveUser(user: User): User {
-        users.add(user)
-        return user
+        val updated = user.copy(password = encoder.encode(user.password))
+        users.add(updated)
+        return updated
     }
 
     fun deleteUser(id: String): Boolean {
