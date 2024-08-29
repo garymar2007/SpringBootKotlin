@@ -3,8 +3,6 @@ package com.gary.SpringBootKotlin.service
 import com.gary.SpringBootKotlin.config.JwtProperties
 import com.gary.SpringBootKotlin.controller.auth.AuthenticationRequest
 import com.gary.SpringBootKotlin.controller.auth.AuthenticationResponse
-import com.gary.SpringBootKotlin.controller.auth.RefreshTokenRequest
-import com.gary.SpringBootKotlin.controller.auth.TokenResponse
 import com.gary.SpringBootKotlin.respository.RefreshTokenRepository
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

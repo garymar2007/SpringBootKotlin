@@ -1,5 +1,6 @@
 package com.gary.SpringBootKotlin.controller.auth
 
+import com.gary.SpringBootKotlin.config.JwtProperties
 import com.gary.SpringBootKotlin.service.AuthenticationService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -11,7 +12,8 @@ import org.springframework.web.server.ResponseStatusException
 @RestController
 @RequestMapping("/api/v1/auth")
 class AuthController(
-    private val authenticationService: AuthenticationService
+    private val authenticationService: AuthenticationService,
+    private val jwtProperties: JwtProperties
 ) {
     @PostMapping
     fun authenticate(@RequestBody authRequest: AuthenticationRequest): AuthenticationResponse {
@@ -27,6 +29,7 @@ class AuthController(
 
     private fun String.mapToTokenResponse(): TokenResponse =
         TokenResponse(
-            token = this
+            token = this,
+            expiration = System.currentTimeMillis() + jwtProperties.refreshTokenExpiration
         )
 }
